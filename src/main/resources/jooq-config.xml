@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.10.0.xsd">
+  <jdbc>
+    <driver>${dataSource.driver}</driver>
+    <url><![CDATA[${dataSource.url}]]></url>
+    <user>${dataSource.user}</user>
+    <password>${dataSource.password}</password>
+  </jdbc>
+
+  <generator>
+    <database>
+      <name>org.jooq.util.mariadb.MariaDBDatabase</name>
+      <inputSchema>java_cake</inputSchema>
+      <excludes>
+        DATABASECHANGELOG |
+        DATABASECHANGELOGLOCK
+      </excludes>
+    </database>
+
+    <target>
+      <packageName>${jooq.target.package}</packageName>
+      <directory>${jooq.target.dir}</directory>
+    </target>
+  </generator>
+</configuration>

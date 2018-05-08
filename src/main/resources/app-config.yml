@@ -1,0 +1,7 @@
+dataSource:
+  driver: ${dataSource.driver}
+  url: ${dataSource.url}
+  user: ${dataSource.user}
+  password: ${dataSource.password}
+jooq:
+  sqlDialect: MARIADB

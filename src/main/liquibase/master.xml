@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+  <changeSet id="Create tables" author="nc">
+    <createTable tableName="category">
+      <column name="id" type="bigint" autoIncrement="true">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="name" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+
+    <createTable tableName="game">
+      <column name="id" type="bigint" autoIncrement="true">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="name" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+
+    <createTable tableName="game_category">
+      <column name="game_id" type="bigint" autoIncrement="true">
+        <constraints primaryKey="true" foreignKeyName="fk_game_category_game" references="game(id)"/>
+      </column>
+      <column name="category_id" type="bigint">
+        <constraints primaryKey="true" foreignKeyName="fk_game_category_category" references="category(id)"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="Category test data" author="nc">
+    <insert tableName="category">
+      <column name="id">1</column>
+      <column name="name">Card Game</column>
+    </insert>
+    <insert tableName="category">
+      <column name="id">2</column>
+      <column name="name">Medieval</column>
+    </insert>
+    <insert tableName="category">
+      <column name="id">3</column>
+      <column name="name">Adventure</column>
+    </insert>
+    <insert tableName="category">
+      <column name="id">4</column>
+      <column name="name">Exploration</column>
+    </insert>
+    <insert tableName="category">
+      <column name="id">5</column>
+      <column name="name">Fantasy</column>
+    </insert>
+    <insert tableName="category">
+      <column name="id">6</column>
+      <column name="name">Fighting</column>
+    </insert>
+    <insert tableName="category">
+      <column name="id">7</column>
+      <column name="name">Miniatures</column>
+    </insert>
+  </changeSet>
+
+  <changeSet id="Game test data" author="nc">
+    <insert tableName="game">
+      <column name="id">1</column>
+      <column name="name">Dominion</column>
+    </insert>
+    <insert tableName="game">
+      <column name="id">2</column>
+      <column name="name">Gloomhaven</column>
+    </insert>
+
+    <insert tableName="game_category">
+      <column name="game_id">1</column>
+      <column name="category_id">1</column>
+    </insert>
+    <insert tableName="game_category">
+      <column name="game_id">1</column>
+      <column name="category_id">2</column>
+    </insert>
+    <insert tableName="game_category">
+      <column name="game_id">2</column>
+      <column name="category_id">3</column>
+    </insert>
+    <insert tableName="game_category">
+      <column name="game_id">2</column>
+      <column name="category_id">4</column>
+    </insert>
+    <insert tableName="game_category">
+      <column name="game_id">2</column>
+      <column name="category_id">5</column>
+    </insert>
+    <insert tableName="game_category">
+      <column name="game_id">2</column>
+      <column name="category_id">6</column>
+    </insert>
+    <insert tableName="game_category">
+      <column name="game_id">2</column>
+      <column name="category_id">7</column>
+    </insert>
+  </changeSet>
+
+</databaseChangeLog>
